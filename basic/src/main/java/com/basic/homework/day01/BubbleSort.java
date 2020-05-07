@@ -31,6 +31,50 @@ public class BubbleSort {
         return randomArray;
     }
 
+    public static Integer[] doBubbleSort01(Integer[] randomArray){
+
+        for(int i=0;i<randomArray.length-1;i++){
+            boolean flag = true;
+            for(int j=0;j<randomArray.length-i-1;j++){
+                if(randomArray[j]<randomArray[j+1]){
+                    Integer tmp = randomArray[j];
+                    randomArray[j] = randomArray[j+1];
+                    randomArray[j+1] = tmp;
+                    flag =false;
+                }
+            }
+            if(flag==true){
+                return randomArray;
+            }
+        }
+        return randomArray;
+    }
+
+    public static Integer[] doBubbleSort02(Integer[] randomArray){
+        int k = randomArray.length-1;
+
+        for(int i=0;i<randomArray.length-1;i++){
+
+            int index = 0;
+            boolean flag = true;
+            for(int j=0;j<k;j++){
+                if(randomArray[j]<randomArray[j+1]){
+                    Integer tmp = randomArray[j];
+                    randomArray[j] = randomArray[j+1];
+                    randomArray[j+1] = tmp;
+                    flag =false;
+                    index = j;
+                }
+            }
+            if(flag==true){
+                return randomArray;
+            }
+            k = index;
+        }
+        return randomArray;
+    }
+
+
     public static void main(String[] args) {
         Integer[] randomArray = BubbleSort.generateArray(10,100);
         for (Integer x:randomArray
@@ -40,9 +84,22 @@ public class BubbleSort {
 
         System.out.println("####################");
 
-        for (Integer y : BubbleSort.doBubbleSort(randomArray)){
+//        for (Integer y : BubbleSort.doBubbleSort(randomArray)){
+//            System.out.println(y);
+//        }
+
+
+//        for (Integer y : BubbleSort.doBubbleSort01(randomArray)){
+//            System.out.println(y);
+//        }
+
+//        Integer[] rand = new Integer[]{10,7,8,9,6,5,4,3,2,1};
+
+        for (Integer y : BubbleSort.doBubbleSort02(randomArray)){
             System.out.println(y);
         }
+
+
     }
 
 
